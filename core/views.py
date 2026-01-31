@@ -4,11 +4,23 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import short_urls
 # Create your views here.
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'core/home.html')
+    if request.method == 'POST':
+        orginal_url = request.POST.get("url")
+
+        if not orginal_url:
+            messages.error(request, "URL is required")
+            return render(request,'core/home.html')
+
+        obj = short_urls.objects.create(
+            orginal_url = orginal_url,
+            short_urls = 'temp'
+        )
+    return render(request, 'core/home.html', {'short_urls':short_urls})
 
 def register_view(request):
     if request.method == 'POST':

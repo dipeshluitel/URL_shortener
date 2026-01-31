@@ -11,12 +11,13 @@
             {{ message }}
             {% endfor %}
             {% endif %}
-            <div class="mb-3">
-                <label for="username" class="form-label">Insert URL:</label>
-                <input type="text" class="form-control" id="username" name='url' aria-describedby="emailHelp" required>
-            </div>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Insert URL:</label>
+            <input type="text" class="form-control" id="username" name='url' aria-describedby="emailHelp">
+        </div>
 
-            <button type="submit" class="btn btn-primary">Short URL</button>
+        <button type="submit" class="btn btn-primary">Short URL</button>
     </form>
     <br>
     {% if short_url %}
