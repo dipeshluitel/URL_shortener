@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name-='username' aria-describedby="emailHelp">
+    </div>
+
+    <div class="mb-3">
+        <label for="pass1" class="form-label">Email address</label>
+        <input type="password" class="form-control" name="password1" id="pass1" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+<a href="{% url 'Register' %}">Don't have an account?</a>
