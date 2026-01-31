@@ -28,7 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.onrender.com",
+    "https://*.railway.app",
+    "https://urlshortener-production-88de.up.railway.app"
 ]
 
 # Application definition
