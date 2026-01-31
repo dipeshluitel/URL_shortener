@@ -1,27 +1,30 @@
 {% extends "core/base.html" %}
 <title>{% block title %}Login{% endblock title %}Login</title>
 {% block main_content %}
-<div class="container">
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-primary">
-      {{ message }}
-  {% endfor %}
-{% endif %}
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name='username' aria-describedby="emailHelp" required>
-    </div>
+<div class="container-fluid col-6">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name='username' aria-describedby="emailHelp" required>
+        </div>
 
-    <div class="mb-3">
-        <label for="pass1" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" id="pass1" aria-describedby="emailHelp" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
-<a href="{% url 'register' %}">Don't have an account?</a>
+        <div class="mb-3">
+            <label for="pass1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="pass1" aria-describedby="emailHelp"
+                required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <a href="{% url 'register' %}" style="color:#000">Don't have an account?</a>
 </div>
+
 {% endblock main_content %}

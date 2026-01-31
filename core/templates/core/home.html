@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-<title>{% block title %}Login{% endblock title %}Login</title>
+<title>{% block title %}shortener{% endblock title %}Login</title>
 {% block main_content %}
 <div class="container">
     <h2>URL SHORTENER</h2>
@@ -48,8 +48,8 @@
                     </td>
                     <td>{{object.visit}}</td>
                     <td>{{object.created_at}}</td>
-                    <td><button class="btn btn-danger" name="delete"><a
-                                href="{% url 'delete_url' object.id %}">Delete</a></button></td>
+                    <td><button class="btn btn-danger" name="delete"><a href="{% url 'delete_url' object.id %}"
+                                style="color: #fff; text-decoration: none;">Delete</a></button></td>
                 </tr>
                 {% endfor %}
             </tbody>

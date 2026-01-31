@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
-<title>{% block title %}Login{% endblock title %}Login</title>
+<title>{% block title %}Register{% endblock title %}Login</title>
 {% block main_content %}
-<div class="container">
+<div class="container-fluid col-6">
     <h2>Register</h2>
     <form method="post">
         {% csrf_token %}
@@ -10,9 +10,9 @@
         {% for message in messages %}
         <div class="alert alert-primary" role="alert">
             {{ message }}
-            {% endfor %}
-            {% endif %}
         </div>
+        {% endfor %}
+        {% endif %}
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name='username' aria-describedby="emailHelp" required>
@@ -34,7 +34,8 @@
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
-    <a href="{% url 'login' %}">Already have an account?</a>
+    <a href="{% url 'login' %}" style="color: #000;">Already have an account?</a>
+
 
 </div>
 
