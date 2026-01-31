@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import short_urls
+from .utils import base62_encoding
 # Create your views here.
 
 @login_required(login_url='login')
@@ -14,13 +15,19 @@ def home(request):
 
         if not orginal_url:
             messages.error(request, "URL is required")
-            return render(request,'core/home.html')
+            return redirect(request,'core/home.html')
 
         obj = short_urls.objects.create(
+            user = request.user,
             orginal_url = orginal_url,
-            short_urls = 'temp'
+            short_url = 'temp'
         )
-    return render(request, 'core/home.html', {'short_urls':short_urls})
+        obj.short_url = base62_encoding(obj.id)
+        obj.save(update_fields=['short_url'])
+        messages.success(request, "Short URL Generated Successfully")
+        return redirect('home')
+    urls = short_urls.objects.filter(user = request.user).order_by('-created_at')
+    return render(request, 'core/home.html', {'short_urls':urls,})
 
 def register_view(request):
     if request.method == 'POST':
@@ -63,6 +70,13 @@ def login_view(request):
     
     return render(request,'core/login.html')
 
+@login_required
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def delete_url(request,id):
+    queryset = short_urls.objects.get(id=id)
+    queryset.delete()
+    return redirect('home')

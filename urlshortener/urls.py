@@ -23,5 +23,6 @@ urlpatterns = [
     path('register/',views.register_view,name='register'),
     path('login/',views.login_view,name='login'),
     path('logout/',views.logout_view,name='logout'),
+    path('delete/<id>/',views.delete_url,name='delete_url'),
     path('',include('core.urls')),
 ]
