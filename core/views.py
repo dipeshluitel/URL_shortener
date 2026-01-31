@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import short_urls
 from .utils import base62_encoding
+
 # Create your views here.
 
 @login_required(login_url='login')
@@ -80,3 +81,11 @@ def delete_url(request,id):
     queryset = short_urls.objects.get(id=id)
     queryset.delete()
     return redirect('home')
+
+def redirect_short_url(request, id):
+    obj = get_object_or_404(short_urls,short_url = id)
+
+    obj.visit += 1
+    obj.save(update_fields=['visit'])
+
+    return redirect(obj.orginal_url)

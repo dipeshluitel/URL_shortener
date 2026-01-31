@@ -24,5 +24,6 @@ urlpatterns = [
     path('login/',views.login_view,name='login'),
     path('logout/',views.logout_view,name='logout'),
     path('delete/<id>/',views.delete_url,name='delete_url'),
+    path('<str:id>/',views.redirect_short_url,name='redirect'),
     path('',include('core.urls')),
 ]
