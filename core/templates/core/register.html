@@ -1,23 +1,32 @@
-<h2>Register</h2>
-<form method="post">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name-='username' aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
-    </div>
+{% extends "core/base.html" %}
+<title>{% block title %}Login{% endblock title %}Login</title>
+{% block main_content %}
+<div class="container">
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
 
-    <div class="mb-3">
-        <label for="pass1" class="form-label">Email address</label>
-        <input type="password" class="form-control" name="password1" id="pass1" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-        <label for="pass2" class="form-label">Email address</label>
-        <input type="password" class="form-control" name="password2" id="pass2" aria-describedby="emailHelp">
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
-<a href="{% url 'login' %}">Already have an account?</a>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name-='username' aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+            <label for="pass1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password1" id="pass1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="pass2" class="form-label">Re-enter Password</label>
+            <input type="password" class="form-control" name="password2" id="pass2" aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <a href="{% url 'login' %}">Already have an account?</a>
+
+</div>
+
+{% endblock main_content %}
