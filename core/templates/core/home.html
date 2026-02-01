@@ -3,7 +3,7 @@
 {% block main_content %}
 <div class="container main_box">
     <h2 style="text-align: center;">URL SHORTENER</h2>
-    <form method="post" class="myform">
+    <form method="post">
         {% csrf_token %}
         {% if messages %}
         {% for message in messages %}
