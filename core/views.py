@@ -32,7 +32,7 @@ def home(request):
 
 def register_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        username = request.POST.get('username').lower()
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
@@ -58,7 +58,7 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        username = request.POST.get('username').lower()
         password = request.POST['password']
 
         user = authenticate(request,username=username,password=password)
@@ -89,3 +89,4 @@ def redirect_short_url(request, id):
     obj.save(update_fields=['visit'])
 
     return redirect(obj.orginal_url)
+
