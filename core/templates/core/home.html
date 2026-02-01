@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 <title>{% block title %}shortener{% endblock title %}Login</title>
 {% block main_content %}
-<div class="container main_box">
+<div class="container-fluid">
     <h2 style="text-align: center;">URL SHORTENER</h2>
     <form method="post">
         {% csrf_token %}
