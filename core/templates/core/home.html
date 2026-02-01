@@ -1,9 +1,9 @@
 {% extends "core/base.html" %}
 <title>{% block title %}shortener{% endblock title %}Login</title>
 {% block main_content %}
-<div class="container">
-    <h2>URL SHORTENER</h2>
-    <form method="post">
+<div class="container main_box">
+    <h2 style="text-align: center;">URL SHORTENER</h2>
+    <form method="post" class="myform">
         {% csrf_token %}
         {% if messages %}
         {% for message in messages %}
@@ -20,7 +20,7 @@
         <button type="submit" class="btn btn-primary">Short URL</button>
     </form>
     <br>
-    <div class="mb-3">
+    <div class="mb-3 mt-4">
         {% if short_urls %}
         <h4>Shortened URLs ---{{user.username}}---</h4>
 

@@ -1,9 +1,9 @@
 {% extends "core/base.html" %}
 <title>{% block title %}Register{% endblock title %}Login</title>
 {% block main_content %}
-<div class="container-fluid col-6">
+<div class="container-fluid col-6 main_box">
     <h2>Register</h2>
-    <form method="post">
+    <form method="post" class="myform">
         {% csrf_token %}
 
         {% if messages %}
